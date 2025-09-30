@@ -1,21 +1,27 @@
-from flask import Flask, request, jsonify, make_response
-from utils.db_connection import get_conn, init_pool
+from flask import Flask, render_template
+from utils.db_connection import init_pool
 
 # importar blueprints das rotas
 from routes.usuario_routes import usuarios_bp
+from routes.turma_routes import turmas_bp
 
 def create_app(config_object="config.Config"):
-        # Iniciar o flask
-        app = Flask(__name__)
-        app.config.from_object(config_object)
-        app.config['JSON_SORT_KEYS'] = False
-        app.config.from_object("config.Config")
-        init_pool(app)
+    # Iniciar o flask
+    app = Flask(__name__, template_folder='../frontend', static_folder='../frontend')
+    app.config.from_object(config_object)
+    app.config['JSON_SORT_KEYS'] = False
+    app.config.from_object("config.Config")
+    init_pool(app)
 
-        # Registrar blueprints com prefixos
-        app.register_blueprint(usuarios_bp, url_prefix="/api/usuarios")
-        
-        return app
+    # Registrar blueprints com prefixos
+    app.register_blueprint(usuarios_bp, url_prefix="/api/usuarios")
+    app.register_blueprint(turmas_bp, url_prefix="/api/turmas")
+
+    @app.route("/index")
+    def index():
+        return render_template('index.html')
+
+    return app
 
 if __name__ == '__main__':
     app = create_app()
