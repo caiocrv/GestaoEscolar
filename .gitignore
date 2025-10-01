@@ -2,3 +2,13 @@ venv/
 .env
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.env
+
+# C compilado
+*.dll
+*.exp
+*.lib
+
+backend/c_modules/build/*
