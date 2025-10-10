@@ -106,7 +106,7 @@ main {
 .chat-header .mascote {
   width: 40px;
   height: auto;
-  margin-right: 8px; /* espaço entre mascote e texto */
+  margin-right: 8px;
 }
 
 .chat-input {
@@ -132,5 +132,5 @@ main {
 }
 
 #send-btn:hover {
-  background-color: #003366; /* tom mais escuro no hover */
+  background-color: #003366;
 }
