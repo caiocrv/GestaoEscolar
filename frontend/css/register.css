@@ -96,5 +96,5 @@ button{
     height: 100%;
     filter: blur(4px);
     z-index: -1;
-    background-image: url(../imagens/unigestao.png);
+    background-image: url(../img/unigestao.png);
 }

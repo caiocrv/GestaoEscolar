@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UniGestão</title>
-    <link rel="stylesheet" href="css/Index.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
     <header>
       <nav>
-        <img src="imagens/Logo.png" alt="Logo" class="Logo">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="Logo">
         <ul>
-          <li><a href="#">Sobre</a></li>
-          <li><a href="login.html">Entrar</a></li>
-          <li><a href="register.html">Matricule-se</a></li>
+          <li><a href="/about">Sobre</a></li>
+          <li><a href="/login">Entrar</a></li>
+          <li><a href="/register">Matricule-se</a></li>
         </ul>
       </nav>
     </header>
@@ -30,10 +30,10 @@
       </aside>
 
       <article>
-        <img src="imagens/unigestao.png" alt="">
+        <img src="{{ url_for('static', filename='img/unigestao.png') }}" alt="">
         <div class="chat-box">
           <div class="chat-header">
-            <img src="imagens/mascote.png" alt="Mascote Unigestão" class="mascote">
+            <img src="{{ url_for('static', filename='img/mascote.png') }}" alt="Mascote Unigestão" class="mascote">
            Atendimento Virtual
           </div>
           <div class="chat-input">

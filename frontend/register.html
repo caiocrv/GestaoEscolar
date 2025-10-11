@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cadastro</title>
-    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
 </head>
 <body>
     <header>
         <nav>
-            <img src="imagens/Logo.png" alt="logo" class="logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
             <ul>
                 <li><a href="#" class="navbar">Sobre</a></li>
-                <li><a href="index.html" class="navbar">Home</a></li>
-                <li><a href="login.html" class="navbar">Login</a></li>
+                <li><a href="/" class="navbar">Home</a></li>
+                <li><a href="/login" class="navbar">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -22,27 +22,24 @@
        <div class="background"></div>
        <div class="card-login">
         <h1>CADASTRO</h1>
-        <form>
-            <label for="username">Usuário:</label>
-            <input type="text" id="username" name="usuario" placeholder="Usuário"><br><br>
+        <form id="formCadastro">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Nome completo" required><br><br>
 
             <label for="email">Email:</label>
-            <input type="text" id="email" name="email" placeholder="Email"> <br><br>
+            <input type="text" id="email" name="email" placeholder="Email" required> <br><br>
 
 
             <label for="password">Senha:</label>
-            <input type="password" id="password" name="password" placeholder="Senha"><br><br>
+            <input type="password" id="password" name="password" placeholder="Senha" required><br><br>
 
-            <label for="password">Confirme sua senha:</label>
-            <input type="password" id="password" name="password" placeholder="Senha"> <br><br>
+            <label for="confirmPassword">Confirme sua senha:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Senha" required> <br><br>
 
             <button type="submit">Enviar</button> <br><br>
-
         </form>
+        <script src="{{ url_for('static', filename='js/usuarios.js') }}"></script>
        </div>
     </main>
-</body>
-
-</html>
 </body>
 </html>

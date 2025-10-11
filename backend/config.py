@@ -11,3 +11,6 @@ class Config:
     MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "")
     MYSQL_DB = os.getenv("MYSQL_DB", "")
     MYSQL_PORT = int(os.getenv("MYSQL_PORT", 3306))
+
+    EMAIL_USERNAME = os.getenv("EMAIL_USERNAME", "luna.projetosenac@gmail.com")
+    EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD", "qtuu tkli ngfl lavm")
