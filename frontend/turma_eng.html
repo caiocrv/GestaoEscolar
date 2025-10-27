@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Turma - UNIGESTÃO</title>
+  <link rel="stylesheet" href="../frontend/css/turmaeng.css">
+</head>
+<body>
+  <div class="container">
+
+    <input type="radio" id="inicio" name="aba" checked>
+    <input type="radio" id="atividades" name="aba">
+    <input type="radio" id="trabalhos" name="aba">
+    <input type="radio" id="notas" name="aba">
+    <input type="radio" id="arquivos" name="aba">
+
+    <aside class="menu">
+      <div class="logo">
+        <img src="../frontend/img/logo.png" alt="Logo Unigestão">
+        <h2>UNIGESTÃO</h2>
+      </div>
+
+      <h3>Algoritmos e Estrutura de Dados em Phyton</h3>
+
+      <label for="inicio">Página Inicial</label>
+      <label for="atividades">Atividades</label>
+      <label for="trabalhos">Trabalhos</label>
+      <label for="notas">Notas</label>
+    </aside>
+
+    <main class="conteudo">
+
+      <section class="aba inicio">
+        <h1>Bem-vindo à turma!</h1>
+        <p>Aqui você encontrará todas as atividades, trabalhos e notas da disciplina.</p>
+      </section>
+
+      <section class="aba atividades">
+        <h1>Atividades de Aula</h1>
+        <p>Envie aqui suas atividades em formato PDF ou Word.</p>
+        <div class="upload-container">
+            <label for="file-upload" class="custom-file-upload">
+                <div class="upload-icon">
+                    <img src="../frontend/img/input-turmas.png" alt="upload icon">
+                </div>
+                <p>Anexe o arquivo desejado</p>
+                <input type="file" id="file upload">
+                <button type="submit" class="btn-enviar">Enviar</button>   
+            </label>
+        </div>
+      </section>
+
+      <section class="aba trabalhos">
+        <h1>Trabalhos</h1>
+        <p>Envie aqui os trabalhos passados em Aula</p>
+        <div class="upload-container">
+            <label for="file-upload" class="custom-file-upload">
+                <div class="upload-icon">
+                    <img src="../frontend/img/input-turmas.png" alt="upload icon">
+                </div>
+                <p>Anexe o arquivo desejado</p>
+                <input type="file" id="file upload">
+                <button type="submit" class="btn-enviar">Enviar</button>   
+            </label>
+        </div>
+      </section>
+
+      <section class="aba notas">
+        <h1>Notas</h1>
+        <table>
+          <tr><th>Atividade</th><th>Nota</th></tr>
+          <tr><td>Atividade 1</td><td>8.5</td></tr>
+          <tr><td>Trabalho 1</td><td>9.0</td></tr>
+          <tr><td>Atividade 2</td><td>7.8</td></tr>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
