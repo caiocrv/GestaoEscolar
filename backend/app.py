@@ -6,6 +6,7 @@ from utils.db_connection import init_pool
 from routes.usuario_routes import usuarios_bp
 from routes.turma_routes import turmas_bp
 from routes.notas_routes import notas_bp
+from routes.auth_routes import auth_bp
 
 def create_app(config_object="config.Config"):
     # Iniciar o flask
@@ -21,6 +22,7 @@ def create_app(config_object="config.Config"):
     app.register_blueprint(usuarios_bp, url_prefix="/api/usuarios")
     app.register_blueprint(turmas_bp, url_prefix="/api/turmas")
     app.register_blueprint(notas_bp, url_prefix="/api/notas")
+    app.register_blueprint(auth_bp, url_prefix="/api/auth")
 
     @app.route("/")
     def index():

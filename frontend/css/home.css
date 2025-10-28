@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #F0F8FF;
+    color: #004b88;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+
+nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: #F0F8FF;
+  border-radius: 8px;
+}
+
+.logo{
+    height: 100px;
+    width: auto;
+}
+
+li{
+    display: inline-block;
+    margin: 15px;
+}
+
+.navbar{
+    text-decoration: none;
+    background-color: #004b88;
+    color: #ffff;
+    border-radius: 6px;
+    padding: 6px 12px;
+}
+
+.navbar:hover{
+  background-color: #003366;
+}
+
+.turmas-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 3rem;
+    justify-items: center;
+    margin-top: 100px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.card-icon {
+    width: 100px;
+    height: 100px;
+    background-color: #f0f4f8;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem auto;
+    overflow: hidden;
+}
+
+.card-icon img {
+    width: 70%;
+    height: auto;
+    object-fit: contain;
+}
+
+.card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e5180;
+    margin-top: 0.5rem;
+    line-height: 1.3;
+}
+
+button{
+    background-color: #004b88;
+    color: #ffff;
+    border-radius: 6px;
+    padding: 3px 6px;
+    border: solid transparent;
+    cursor: pointer;
+}
+
+.btn{
+    margin-top: 24px;   
+}
+
+
