@@ -1,10 +1,9 @@
-```markdown
 # 🎓 UniGestão – Sistema Acadêmico Integrado
 
 O **UniGestão** é um sistema acadêmico desenvolvido para facilitar o gerenciamento de **alunos, professores, turmas, atividades e notas** em instituições de ensino.  
 O projeto integra recursos de **autenticação segura, visualização de dados, upload de arquivos e atendimento virtual assistido por IA**.
 
-
+---
 
 ## Funcionalidades Principais
 
@@ -18,9 +17,7 @@ O projeto integra recursos de **autenticação segura, visualização de dados, 
 | 🔐 Níveis de Acesso | Perfis com diferentes permissões (Admin, Professor, Aluno) |
 
 
-
-
-## Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
 ### **Backend**
 - Python + Flask
@@ -31,7 +28,6 @@ O projeto integra recursos de **autenticação segura, visualização de dados, 
 ### **Frontend**
 - HTML, CSS, JavaScript
 - Fetch API para consumo da API backend
-
 
 
 ### **Criar e ativar ambiente virtual**
