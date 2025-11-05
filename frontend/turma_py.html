@@ -4,7 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Turma - UNIGESTÃO</title>
-  <link rel="stylesheet" href="../frontend/css/turmapy.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/turmapy.css') }}">
+  <script>
+        const token = localStorage.getItem("token");
+        if (!token) {
+            window.location.href = "/login";
+        }
+  </script>
 </head>
 <body>
   <div class="container">
@@ -17,7 +23,7 @@
 
     <aside class="menu">
       <div class="logo">
-        <img src="../frontend/img/logo.png" alt="Logo Unigestão">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Unigestão">
         <h2>UNIGESTÃO</h2>
       </div>
 
@@ -42,7 +48,7 @@
         <div class="upload-container">
             <label for="file-upload" class="custom-file-upload">
                 <div class="upload-icon">
-                    <img src="../frontend/img/input-turmas.png" alt="upload icon">
+                    <img src="{{ url_for('static', filename='img/input-turmas.png') }}" alt="upload icon">
                 </div>
                 <p>Anexe o arquivo desejado</p>
                 <input type="file" id="file upload">
@@ -57,7 +63,7 @@
         <div class="upload-container">
             <label for="file-upload" class="custom-file-upload">
                 <div class="upload-icon">
-                    <img src="../frontend/img/input-turmas.png" alt="upload icon">
+                    <img src="{{ url_for('static', filename='img/input-turmas.png') }}" alt="upload icon">
                 </div>
                 <p>Anexe o arquivo desejado</p>
                 <input type="file" id="file upload">
@@ -67,14 +73,60 @@
       </section>
 
       <section class="aba notas">
-        <h1>Notas</h1>
-        <table>
-          <tr><th>Atividade</th><th>Nota</th></tr>
-          <tr><td>Atividade 1</td><td>8.5</td></tr>
-          <tr><td>Trabalho 1</td><td>9.0</td></tr>
-          <tr><td>Atividade 2</td><td>7.8</td></tr>
-        </table>
-      </section>
+      <h1>Minhas Notas</h1>
+      <table id="tabela-notas">
+        <thead>
+          <tr>
+            <th>Atividade</th>
+            <th>Nota</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Notas serão inseridas via JavaScript -->
+        </tbody>
+      </table>
+
+      <p id="media-geral" style="margin-top:15px; font-weight:bold;"></p>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const token = localStorage.getItem("token");
+        if (!token) return;
+
+        fetch("http://192.168.100.56:5000/api/notas/minhas", {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          const tabela = document.querySelector("#tabela-notas tbody");
+          const mediaTexto = document.getElementById("media-geral");
+
+          if (data.erro || data.mensagem) {
+            tabela.innerHTML = `<tr><td colspan="2">${data.erro || data.mensagem}</td></tr>`;
+            return;
+          }
+
+          tabela.innerHTML = ""; // limpar tabela
+
+          // Lista de notas (simples)
+          data.notas.forEach((nota, index) => {
+            const row = `<tr><td>Atividade ${index + 1}</td><td>${nota.toFixed(2)}</td></tr>`;
+            tabela.innerHTML += row;
+          });
+
+          // Exibir média
+          mediaTexto.textContent = `Média Geral: ${data.media.toFixed(2)}`;
+        })
+        .catch(() => {
+          document.querySelector("#tabela-notas tbody").innerHTML =
+            "<tr><td colspan='2'>Erro ao carregar notas.</td></tr>";
+        });
+      });
+    </script>
     </main>
   </div>
 </body>

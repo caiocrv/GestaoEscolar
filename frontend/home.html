@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UniGestão</title>
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <script>
+        const token = localStorage.getItem("token");
+        if (!token) {
+            window.location.href = "/login";
+        }
+    </script>
 </head>
 <body>
     <header>
         <nav>
-            <img src="img/logo.png" alt="logo" class="logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="logo">
             <ul>
-                <li><a href="#" class="navbar">Sobre</a></li>
-                <li><a href="login.html" class="navbar">Login</a></li>
-                <li><a href="index.html" class="navbar">Sair</a></li>
+                <li><a href="#" onclick="logout()" class="navbar">Sair</a></li>
             </ul>
         </nav>
     </header>
@@ -22,24 +26,32 @@
         <div class="turmas-container">
             <div class="card">
                 <div class="card-icon">
-                    <img src="img/logo-py.png" alt="logo">
+                    <img src="{{ url_for('static', filename='img/logo-py.png') }}" alt="logo">
                 </div>
                 <h3>ALGORITMOS E ESTRUTURA DE DADOS EM PHYTON</h3>
                 <br>
-                <a href="turma_py.html"><button>Acessar</button></a>
+                <a href="/turma_py"><button>Acessar</button></a>
             </div>
 
             <div class="card">
                 <div class="card-icon">
-                    <img src="img/logo-eng.png" alt="logo">
+                    <img src="{{ url_for('static', filename='img/logo-eng.png') }}" alt="logo">
                 </div>
                 <h3>ENGENHARIA DE SOFTWARE AGIL</h3>
                 <br>
-                <a href="turma_eng.html"><button class="btn">Acessar</button></a>
+                <a href="/turma_eng"><button class="btn">Acessar</button></a>
             </div>
 
         </div>
     </main>
 
+    <script>
+        function logout() {
+            localStorage.removeItem("token");
+            localStorage.removeItem("usuario_nome");
+            localStorage.removeItem("usuario_cargo");
+            window.location.href = "/login";
+        }
+    </script>
 </body>
 </html>

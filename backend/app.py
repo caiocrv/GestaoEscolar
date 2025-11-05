@@ -7,6 +7,10 @@ from routes.usuario_routes import usuarios_bp
 from routes.turma_routes import turmas_bp
 from routes.notas_routes import notas_bp
 from routes.auth_routes import auth_bp
+from routes.chatbot_routes import chatbot_bp
+from google.generativeai import list_models
+print(list_models())
+
 
 def create_app(config_object="config.Config"):
     # Iniciar o flask
@@ -23,6 +27,7 @@ def create_app(config_object="config.Config"):
     app.register_blueprint(turmas_bp, url_prefix="/api/turmas")
     app.register_blueprint(notas_bp, url_prefix="/api/notas")
     app.register_blueprint(auth_bp, url_prefix="/api/auth")
+    app.register_blueprint(chatbot_bp, url_prefix="/api/chatbot")
 
     @app.route("/")
     def index():
@@ -36,6 +41,17 @@ def create_app(config_object="config.Config"):
     def register():
         return render_template('register.html')
     
+    @app.route("/home")
+    def home():
+        return render_template("home.html")
+    
+    @app.route("/turma_eng")
+    def turma_eng():
+        return render_template("turma_eng.html")
+    
+    @app.route("/turma_py")
+    def turma_py():
+        return render_template("turma_py.html")
         
 
     return app

@@ -43,13 +43,13 @@ async function realizarLogin() {
             const cargo = result.usuario.cargo.toLowerCase();
             if (cargo === "aluno") {
                 console.log("Acesso aluno")
-                window.location.href = "/dashboard/aluno";
+                window.location.href = "/home";
             } else if (cargo === "professor") {
                 console.log("Acesso professor")
-                window.location.href = "/dashboard/professor";
+                window.location.href = "/home";
             } else if (cargo === "administrador") {
                 console.log("Acesso admin")
-                window.location.href = "/dashboard/admin";
+                window.location.href = "/home";
             } else {
                 alert("Cargo desconhecido. Contate o administrador.");
             }

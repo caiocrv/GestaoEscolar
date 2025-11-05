@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UniGestão</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='../css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
     <header>
@@ -32,17 +32,22 @@
       <article>
         <img src="{{ url_for('static', filename='img/unigestao.png') }}" alt="">
         <div class="chat-box">
-          <div class="chat-header">
-            <img src="{{ url_for('static', filename='img/mascote.png') }}" alt="Mascote Unigestão" class="mascote">
-           Atendimento Virtual
-          </div>
-          <div class="chat-input">
-            <input type="text" id="chat" placeholder="Digite sua dúvida...">
-            <button id="send-btn">Enviar</button>
-          </div>
+        <div class="chat-header">
+          <img src="{{ url_for('static', filename='img/mascote.png') }}" alt="Mascote Unigestão" class="mascote">
+          Atendimento Virtual
         </div>
+
+        <!-- Onde as mensagens aparecerão -->
+        <div class="chat-messages" id="chat-messages"></div>
+
+        <div class="chat-input">
+          <input type="text" id="chat" placeholder="Digite sua dúvida...">
+          <button id="send-btn">Enviar</button>
+        </div>
+      </div>
       </article>
     </main> 
-    
+
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
 </body>
 </html>

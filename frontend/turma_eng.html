@@ -4,7 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Turma - UNIGESTÃO</title>
-  <link rel="stylesheet" href="../frontend/css/turmaeng.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/turmaeng.css') }}">
+  <script>
+        const token = localStorage.getItem("token");
+        if (!token) {
+            window.location.href = "/login";
+        }
+  </script>
 </head>
 <body>
   <div class="container">

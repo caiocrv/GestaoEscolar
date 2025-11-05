@@ -1,14 +1,15 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
+from functools import wraps
 from utils.db_connection import get_conn
 from argon2 import PasswordHasher
 from services.jwt_service import gerar_token
+import jwt
 
 auth_bp = Blueprint("login", __name__)
 ph = PasswordHasher()
 
 @auth_bp.route("/login", methods=["POST"])
 def login():
-    print("Entrou na rota login")
     dados = request.json
     email = dados.get("email")
     senha = dados.get("senha")
@@ -41,3 +42,22 @@ def login():
             "cargo": usuario["cargo"]
         }
     })
+
+def auth_required(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        token = request.headers.get("Authorization", "").replace("Bearer ", "")
+
+        if not token:
+            return jsonify({"erro": "Token não fornecido"}), 401
+
+        try:
+            dados = jwt.decode(token, current_app.config["SECRET_KEY"], algorithms=["HS256"])
+            request.usuario = dados
+        except jwt.ExpiredSignatureError:
+            return jsonify({"erro": "Token expirado"}), 401
+        except jwt.InvalidTokenError:
+            return jsonify({"erro": "Token inválido"}), 401
+
+        return f(*args, **kwargs)
+    return wrapper
